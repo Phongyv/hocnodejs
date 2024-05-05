@@ -7,6 +7,9 @@ require('dotenv').config()
 const app = express()
 const port = process.env.PORT //use env variable
 
+app.use(express.json())
+app.use(express.urlencoded({extended:true}))
+
 //config router view engine & static file
 const configViewEngine = require('./config/viewEngine');
  configViewEngine(app);
@@ -15,14 +18,6 @@ const configViewEngine = require('./config/viewEngine');
 const webRoutes = require('./routes/web.js');
 app.use('/', webRoutes);
 
-//database
-const connection=require('./config/database.js')
-connection.query(
-  'select * from Users u',
-  function(err,results,fields){
-    console.log('log results:',results)
-  }
-)
 
 //listen port
 app.listen(port, () => {

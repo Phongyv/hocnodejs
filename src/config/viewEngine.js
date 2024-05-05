@@ -3,7 +3,8 @@ const path = require('path');
 
 const configViewEngine = (app) =>{
     //check config
-    console.log('check dirname:',__dirname);
+    //console.log('check dirname:',__dirname);
+   
     //config router view engine
 app.set('views', path.join('./src', 'views'));
 app.set('view engine','ejs');
